@@ -30,7 +30,7 @@ namespace TestApp
             }
         }
 
-        private static DataTable Autho()
+        private DataTable Autho()
         {
             DataTable dt = new DataTable();
             string cmdstr = """

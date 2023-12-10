@@ -16,5 +16,26 @@ namespace TestApp
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+                Hide();
+                var form = new Form5();
+                form.ShowDialog();
+                Close();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+                Hide();
+                var form = new Form6();
+                form.ShowDialog();
+                Close();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

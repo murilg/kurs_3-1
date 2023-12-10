@@ -29,9 +29,10 @@ public partial class Form1 : Form
                     con.Open();
                     id = (int)cmd.ExecuteScalar();
                     {
-                        var form = new Form4();
-                        form.Show();
                         Hide();
+                        var form = new Form3();
+                        form.ShowDialog();
+                        Close();
                     }
                 }
                 catch (Exception ex)
