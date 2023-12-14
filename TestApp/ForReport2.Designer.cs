@@ -1,6 +1,6 @@
 ﻿namespace TestApp
 {
-    partial class Form3
+    partial class ForReport2
     {
         /// <summary>
         /// Required designer variable.
@@ -28,45 +28,32 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            button2 = new Button();
+            reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
             SuspendLayout();
             // 
-            // button1
+            // reportViewer1
             // 
-            button1.Location = new Point(183, 245);
-            button1.Name = "button1";
-            button1.Size = new Size(94, 58);
-            button1.TabIndex = 0;
-            button1.Text = "Архив";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            reportViewer1.LocalReport.ReportEmbeddedResource = "TestApp.Report1.rdlc";
+            reportViewer1.Location = new Point(0, 0);
+            reportViewer1.Name = "ReportViewer";
+            reportViewer1.ServerReport.BearerToken = null;
+            reportViewer1.Size = new Size(800, 400);
+            reportViewer1.TabIndex = 0;
             // 
-            // button2
-            // 
-            button2.Location = new Point(530, 245);
-            button2.Name = "button2";
-            button2.Size = new Size(94, 58);
-            button2.TabIndex = 1;
-            button2.Text = "Оформить ДТП";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
-            // 
-            // Form3
+            // ForReport2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Name = "Form3";
-            Text = "Form3";
+            Controls.Add(reportViewer1);
+            Name = "ForReport2";
+            Text = "ForReport2";
+            Load += ForReport2_Load;
             ResumeLayout(false);
         }
 
         #endregion
 
-        private Button button1;
-        private Button button2;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

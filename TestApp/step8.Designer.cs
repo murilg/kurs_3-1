@@ -1,6 +1,6 @@
 ﻿namespace TestApp
 {
-    partial class step3
+    partial class step8
     {
         /// <summary>
         /// Required designer variable.
@@ -29,74 +29,73 @@
         private void InitializeComponent()
         {
             label1 = new Label();
-            maskedTextBox1 = new MaskedTextBox();
-            groupBox1 = new GroupBox();
+            label2 = new Label();
+            label3 = new Label();
             button1 = new Button();
             button2 = new Button();
-            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(148, 55);
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            label1.Location = new Point(273, 33);
             label1.Name = "label1";
-            label1.Size = new Size(329, 20);
+            label1.Size = new Size(261, 20);
             label1.TabIndex = 0;
-            label1.Text = "Введите полис ОСАГО второго участника ДТП";
+            label1.Text = "Европротокол успешно оформлен";
             // 
-            // maskedTextBox1
+            // label2
             // 
-            maskedTextBox1.Location = new Point(6, 26);
-            maskedTextBox1.Mask = "LLL 0000000000";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(238, 27);
-            maskedTextBox1.TabIndex = 1;
+            label2.AutoSize = true;
+            label2.Location = new Point(273, 82);
+            label2.Name = "label2";
+            label2.Size = new Size(188, 20);
+            label2.TabIndex = 1;
+            label2.Text = "Номер извещения о ДТП:";
             // 
-            // groupBox1
+            // label3
             // 
-            groupBox1.Controls.Add(maskedTextBox1);
-            groupBox1.Location = new Point(148, 93);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(250, 62);
-            groupBox1.TabIndex = 2;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "Серия и номер полиса";
+            label3.AutoSize = true;
+            label3.Location = new Point(467, 82);
+            label3.Name = "label3";
+            label3.Size = new Size(50, 20);
+            label3.TabIndex = 2;
+            label3.Text = "label3";
             // 
             // button1
             // 
-            button1.Location = new Point(674, 386);
+            button1.Location = new Point(273, 161);
             button1.Name = "button1";
-            button1.Size = new Size(94, 29);
+            button1.Size = new Size(244, 47);
             button1.TabIndex = 3;
-            button1.Text = "Далее";
+            button1.Text = "Посмотреть отчёт";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(574, 386);
+            button2.Location = new Point(648, 392);
             button2.Name = "button2";
-            button2.Size = new Size(94, 29);
+            button2.Size = new Size(124, 36);
             button2.TabIndex = 4;
-            button2.Text = "Отмена";
+            button2.Text = "На главную";
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // step3
+            // step8
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
             Controls.Add(button2);
             Controls.Add(button1);
-            Controls.Add(groupBox1);
+            Controls.Add(label3);
+            Controls.Add(label2);
             Controls.Add(label1);
-            Name = "step3";
-            Text = "step3";
-            Load += step3_Load;
-            groupBox1.ResumeLayout(false);
-            groupBox1.PerformLayout();
+            Name = "step8";
+            Text = "step8";
+            Load += step8_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -104,8 +103,8 @@
         #endregion
 
         private Label label1;
-        private MaskedTextBox maskedTextBox1;
-        private GroupBox groupBox1;
+        private Label label2;
+        private Label label3;
         private Button button1;
         private Button button2;
     }

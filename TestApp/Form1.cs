@@ -30,7 +30,7 @@ public partial class Form1 : Form
                     id = (int)cmd.ExecuteScalar();
                     {
                         Hide();
-                        var form = new Form3();
+                        var form = new Form2();
                         form.ShowDialog();
                         Close();
                     }

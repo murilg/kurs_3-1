@@ -24,6 +24,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="RTADataSet.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>RTADataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Update="RTADataSet1.Designer.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -32,6 +37,10 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Update="RTADataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>RTADataSet.Designer.cs</LastGenOutput>
+    </None>
     <None Update="RTADataSet1.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>RTADataSet1.Designer.cs</LastGenOutput>

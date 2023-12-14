@@ -65,7 +65,8 @@ namespace TestApp
             Autho2(dl);
             Hide();
             var form = new step5();
-            form.Show();
+            form.ShowDialog();
+            Close();
         }
 
         private void Autho2(string dl)
@@ -90,8 +91,8 @@ namespace TestApp
                             {
                                 while (rdr.Read())
                                 {
-                                    Form6.rta.DriverId = rdr.GetInt32(0);
-                                    Form6.rta.VehicleId = rdr.GetInt32(1);
+                                    Form4.rta.DriverId2 = rdr.GetInt32(0);
+                                    Form4.rta.VehicleId2 = rdr.GetInt32(1);
                                 }
                             }
                         }
@@ -108,7 +109,8 @@ namespace TestApp
         {
             Hide();
             var form = new Form3();
-            form.Show();
+            form.ShowDialog();
+            Close();
         }
     }
 }

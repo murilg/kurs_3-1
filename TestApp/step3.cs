@@ -17,14 +17,13 @@ namespace TestApp
                 ins = maskedTextBox1.Text.Trim().Replace(" ", "");
                 Hide();
                 var form = new step4cs();
-                form.Show();
+                form.ShowDialog();
                 Close();
             }
             else
             {
                 MessageBox.Show("Полис ОСАГО недействителен");
             }
-
         }
 
         private int check()
@@ -61,8 +60,13 @@ namespace TestApp
         {
             Hide();
             var form = new Form3();
-            form.Show();
+            form.ShowDialog();
             Close();
+        }
+
+        private void step3_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
