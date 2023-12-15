@@ -32,10 +32,8 @@ namespace TestApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Hide();
             var form = new ForReport2();
             form.ShowDialog();
-            Close();
         }
     }
 }

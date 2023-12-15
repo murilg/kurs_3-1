@@ -102,7 +102,7 @@ namespace TestApp
             }
         }
 
-        private void insertRD (int did, int vid, string damage, int move, string park)
+        private void insertRD(int did, int vid, string damage, int move, string park)
         {
             string cmdstr = """
                             insert into RTA_Driver (RTA_id, Driver_id, Vehicle_id, the_driver_is_drunk, is_the_owner_a_driver, is_the_vehicle_insured, Vehicle_damage, damage_to_other_property, can_the_vehicle_move, Vehicle_parking_address)
@@ -159,6 +159,11 @@ namespace TestApp
                     }
                 }
             }
+        }
+
+        private void textBox3_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

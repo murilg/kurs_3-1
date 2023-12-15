@@ -39,7 +39,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            label1.Location = new Point(273, 33);
+            label1.Location = new Point(262, 34);
             label1.Name = "label1";
             label1.Size = new Size(261, 20);
             label1.TabIndex = 0;
@@ -94,7 +94,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "step8";
-            Text = "step8";
+            Text = "Европротокол оформлен";
             Load += step8_Load;
             ResumeLayout(false);
             PerformLayout();

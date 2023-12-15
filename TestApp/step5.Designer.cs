@@ -71,15 +71,15 @@
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(6, 24);
+            textBox1.Location = new Point(0, 24);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(238, 27);
+            textBox1.Size = new Size(250, 27);
             textBox1.TabIndex = 0;
             // 
             // groupBox2
             // 
             groupBox2.Controls.Add(textBox2);
-            groupBox2.Location = new Point(12, 92);
+            groupBox2.Location = new Point(6, 92);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new Size(250, 60);
             groupBox2.TabIndex = 3;
@@ -88,15 +88,15 @@
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(6, 24);
+            textBox2.Location = new Point(0, 24);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(238, 27);
+            textBox2.Size = new Size(250, 27);
             textBox2.TabIndex = 0;
             // 
             // groupBox3
             // 
             groupBox3.Controls.Add(textBox3);
-            groupBox3.Location = new Point(6, 172);
+            groupBox3.Location = new Point(6, 158);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(250, 60);
             groupBox3.TabIndex = 3;
@@ -105,9 +105,9 @@
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(6, 24);
+            textBox3.Location = new Point(0, 24);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(238, 27);
+            textBox3.Size = new Size(250, 27);
             textBox3.TabIndex = 0;
             // 
             // button1
@@ -134,7 +134,7 @@
             // 
             groupBox4.Controls.Add(groupBox6);
             groupBox4.Controls.Add(groupBox5);
-            groupBox4.Location = new Point(32, 79);
+            groupBox4.Location = new Point(69, 90);
             groupBox4.Name = "groupBox4";
             groupBox4.Padding = new Padding(20);
             groupBox4.Size = new Size(314, 196);
@@ -145,9 +145,9 @@
             // groupBox6
             // 
             groupBox6.Controls.Add(dateTimePicker2);
-            groupBox6.Location = new Point(29, 114);
+            groupBox6.Location = new Point(23, 114);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(257, 60);
+            groupBox6.Size = new Size(263, 60);
             groupBox6.TabIndex = 1;
             groupBox6.TabStop = false;
             groupBox6.Text = "Укажите примерное время ДТП";
@@ -167,9 +167,9 @@
             groupBox7.Controls.Add(groupBox1);
             groupBox7.Controls.Add(groupBox2);
             groupBox7.Controls.Add(groupBox3);
-            groupBox7.Location = new Point(482, 90);
+            groupBox7.Location = new Point(432, 90);
             groupBox7.Name = "groupBox7";
-            groupBox7.Size = new Size(276, 238);
+            groupBox7.Size = new Size(268, 230);
             groupBox7.TabIndex = 7;
             groupBox7.TabStop = false;
             groupBox7.Text = "Место ДТП";
@@ -187,7 +187,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(69, 21);
+            label1.Location = new Point(69, 32);
             label1.Name = "label1";
             label1.Size = new Size(132, 20);
             label1.TabIndex = 9;
@@ -204,7 +204,7 @@
             Controls.Add(groupBox4);
             Controls.Add(button1);
             Name = "step5";
-            Text = "step5";
+            Text = "Дата и место ДТП";
             Load += step5_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

@@ -30,6 +30,9 @@
         {
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             dataGridView1 = new DataGridView();
+            linkLabel3 = new LinkLabel();
+            linkLabel2 = new LinkLabel();
+            linkLabel1 = new LinkLabel();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -51,22 +54,63 @@
             dataGridView1.Size = new Size(776, 262);
             dataGridView1.TabIndex = 0;
             // 
+            // linkLabel3
+            // 
+            linkLabel3.AutoSize = true;
+            linkLabel3.LinkColor = Color.Gray;
+            linkLabel3.Location = new Point(216, 26);
+            linkLabel3.Name = "linkLabel3";
+            linkLabel3.Size = new Size(26, 20);
+            linkLabel3.TabIndex = 8;
+            linkLabel3.TabStop = true;
+            linkLabel3.Text = "ТС";
+            // 
+            // linkLabel2
+            // 
+            linkLabel2.AutoSize = true;
+            linkLabel2.LinkColor = Color.Blue;
+            linkLabel2.Location = new Point(138, 26);
+            linkLabel2.Name = "linkLabel2";
+            linkLabel2.Size = new Size(38, 20);
+            linkLabel2.TabIndex = 7;
+            linkLabel2.TabStop = true;
+            linkLabel2.Text = "ДТП";
+            linkLabel2.LinkClicked += linkLabel2_LinkClicked;
+            // 
+            // linkLabel1
+            // 
+            linkLabel1.AutoSize = true;
+            linkLabel1.Location = new Point(40, 26);
+            linkLabel1.Name = "linkLabel1";
+            linkLabel1.Size = new Size(65, 20);
+            linkLabel1.TabIndex = 6;
+            linkLabel1.TabStop = true;
+            linkLabel1.Text = "Главная";
+            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
+            // 
             // Form6
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(linkLabel3);
+            Controls.Add(linkLabel2);
+            Controls.Add(linkLabel1);
             Controls.Add(dataGridView1);
             Name = "Form6";
-            Text = "Form6";
+            Text = "ТС";
             Load += Form6_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
         private DataGridView dataGridView1;
+        private LinkLabel linkLabel3;
+        private LinkLabel linkLabel2;
+        private LinkLabel linkLabel1;
     }
 }

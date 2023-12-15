@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             groupBox7 = new GroupBox();
+            maskedTextBox1 = new MaskedTextBox();
             groupBox6 = new GroupBox();
             textBox4 = new TextBox();
             groupBox5 = new GroupBox();
@@ -41,7 +42,7 @@
             textBox1 = new TextBox();
             button1 = new Button();
             button2 = new Button();
-            maskedTextBox1 = new MaskedTextBox();
+            label1 = new Label();
             groupBox7.SuspendLayout();
             groupBox6.SuspendLayout();
             groupBox5.SuspendLayout();
@@ -53,26 +54,34 @@
             // groupBox7
             // 
             groupBox7.Controls.Add(maskedTextBox1);
-            groupBox7.Location = new Point(386, 237);
+            groupBox7.Location = new Point(362, 277);
             groupBox7.Name = "groupBox7";
-            groupBox7.Size = new Size(250, 57);
+            groupBox7.Size = new Size(235, 57);
             groupBox7.TabIndex = 4;
             groupBox7.TabStop = false;
             groupBox7.Text = "Номер телефона";
             // 
+            // maskedTextBox1
+            // 
+            maskedTextBox1.Location = new Point(0, 25);
+            maskedTextBox1.Mask = "0000000000";
+            maskedTextBox1.Name = "maskedTextBox1";
+            maskedTextBox1.Size = new Size(235, 27);
+            maskedTextBox1.TabIndex = 0;
+            // 
             // groupBox6
             // 
             groupBox6.Controls.Add(textBox4);
-            groupBox6.Location = new Point(395, 159);
+            groupBox6.Location = new Point(362, 185);
             groupBox6.Name = "groupBox6";
-            groupBox6.Size = new Size(241, 63);
+            groupBox6.Size = new Size(235, 63);
             groupBox6.TabIndex = 3;
             groupBox6.TabStop = false;
             groupBox6.Text = "Адрес";
             // 
             // textBox4
             // 
-            textBox4.Location = new Point(6, 26);
+            textBox4.Location = new Point(0, 26);
             textBox4.Name = "textBox4";
             textBox4.Size = new Size(235, 27);
             textBox4.TabIndex = 0;
@@ -80,9 +89,9 @@
             // groupBox5
             // 
             groupBox5.Controls.Add(dateTimePicker1);
-            groupBox5.Location = new Point(386, 79);
+            groupBox5.Location = new Point(356, 107);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new Size(250, 61);
+            groupBox5.Size = new Size(241, 61);
             groupBox5.TabIndex = 2;
             groupBox5.TabStop = false;
             groupBox5.Text = "Дата рождения";
@@ -99,33 +108,34 @@
             groupBox4.Controls.Add(textBox3);
             groupBox4.Location = new Point(33, 277);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(241, 63);
+            groupBox4.Size = new Size(221, 63);
             groupBox4.TabIndex = 1;
             groupBox4.TabStop = false;
             groupBox4.Text = "Отчество";
             // 
             // textBox3
             // 
-            textBox3.Location = new Point(58, 30);
+            textBox3.Location = new Point(0, 26);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(125, 27);
+            textBox3.Size = new Size(221, 27);
             textBox3.TabIndex = 0;
+            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // groupBox3
             // 
             groupBox3.Controls.Add(textBox2);
             groupBox3.Location = new Point(33, 185);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(241, 63);
+            groupBox3.Size = new Size(221, 63);
             groupBox3.TabIndex = 1;
             groupBox3.TabStop = false;
             groupBox3.Text = "Имя";
             // 
             // textBox2
             // 
-            textBox2.Location = new Point(58, 30);
+            textBox2.Location = new Point(0, 26);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(125, 27);
+            textBox2.Size = new Size(221, 27);
             textBox2.TabIndex = 0;
             // 
             // groupBox2
@@ -133,16 +143,16 @@
             groupBox2.Controls.Add(textBox1);
             groupBox2.Location = new Point(33, 105);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(241, 63);
+            groupBox2.Size = new Size(221, 63);
             groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             groupBox2.Text = "Фамилия";
             // 
             // textBox1
             // 
-            textBox1.Location = new Point(58, 30);
+            textBox1.Location = new Point(0, 30);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(125, 27);
+            textBox1.Size = new Size(221, 27);
             textBox1.TabIndex = 0;
             // 
             // button1
@@ -165,19 +175,21 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += button2_Click;
             // 
-            // maskedTextBox1
+            // label1
             // 
-            maskedTextBox1.Location = new Point(9, 25);
-            maskedTextBox1.Mask = "0000000000";
-            maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(235, 27);
-            maskedTextBox1.TabIndex = 0;
+            label1.AutoSize = true;
+            label1.Location = new Point(67, 24);
+            label1.Name = "label1";
+            label1.Size = new Size(139, 20);
+            label1.TabIndex = 6;
+            label1.Text = "Введите свидетеля";
             // 
             // step7
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(button2);
             Controls.Add(groupBox2);
             Controls.Add(groupBox3);
@@ -187,7 +199,7 @@
             Controls.Add(groupBox6);
             Controls.Add(groupBox5);
             Name = "step7";
-            Text = "step7";
+            Text = "Введите свидетеля";
             Load += step7_Load;
             groupBox7.ResumeLayout(false);
             groupBox7.PerformLayout();
@@ -201,6 +213,7 @@
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -218,5 +231,6 @@
         private Button button1;
         private Button button2;
         private MaskedTextBox maskedTextBox1;
+        private Label label1;
     }
 }

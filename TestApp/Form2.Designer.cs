@@ -62,6 +62,7 @@
             // linkLabel1
             // 
             linkLabel1.AutoSize = true;
+            linkLabel1.LinkColor = Color.Gray;
             linkLabel1.Location = new Point(47, 37);
             linkLabel1.Name = "linkLabel1";
             linkLabel1.Size = new Size(65, 20);
@@ -95,9 +96,9 @@
             // groupBox1
             // 
             groupBox1.Controls.Add(flowLayoutPanel1);
-            groupBox1.Location = new Point(59, 99);
+            groupBox1.Location = new Point(60, 99);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(325, 186);
+            groupBox1.Size = new Size(368, 206);
             groupBox1.TabIndex = 4;
             groupBox1.TabStop = false;
             groupBox1.Text = "Контактные данные";
@@ -114,7 +115,7 @@
             flowLayoutPanel1.FlowDirection = FlowDirection.TopDown;
             flowLayoutPanel1.Location = new Point(6, 26);
             flowLayoutPanel1.Name = "flowLayoutPanel1";
-            flowLayoutPanel1.Size = new Size(313, 147);
+            flowLayoutPanel1.Size = new Size(356, 174);
             flowLayoutPanel1.TabIndex = 0;
             // 
             // you1
@@ -140,9 +141,9 @@
             you2.AutoSize = true;
             you2.Location = new Point(3, 40);
             you2.Name = "you2";
-            you2.Size = new Size(144, 20);
+            you2.Size = new Size(51, 20);
             you2.TabIndex = 1;
-            you2.Text = "Адрес регистрации";
+            you2.Text = "Адрес";
             // 
             // you3
             // 
@@ -315,7 +316,7 @@
             Controls.Add(linkLabel2);
             Controls.Add(linkLabel1);
             Name = "Form2";
-            Text = "Form2";
+            Text = "Главная";
             Load += Form2_Load;
             groupBox1.ResumeLayout(false);
             flowLayoutPanel1.ResumeLayout(false);

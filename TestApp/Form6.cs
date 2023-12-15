@@ -21,9 +21,7 @@ namespace TestApp
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Hide();
-            var form = new step2();
-            form.Show();
+          
         }
 
         private void Form6_Load(object sender, EventArgs e)
@@ -104,6 +102,22 @@ namespace TestApp
             }
 
             return dt;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Hide();
+            var form = new Form2();
+            form.ShowDialog();
+            Close();
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Hide();
+            var form = new Form3();
+            form.ShowDialog();
+            Close();
         }
     }
 }

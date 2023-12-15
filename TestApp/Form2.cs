@@ -53,7 +53,7 @@ namespace TestApp
                     using (var cmd = new SqlCommand(cmdstr, con))
                     {
                         con.Open();
-                        cmd.Parameters.Add("@id", SqlDbType.Int).Value = 1;
+                        cmd.Parameters.Add("@id", SqlDbType.Int).Value = Form1.id;
                         cmd.Parameters.Add("@vid", SqlDbType.Int).Value = 1;
                         using (var rdr = cmd.ExecuteReader())
                         {

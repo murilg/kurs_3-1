@@ -29,27 +29,27 @@ namespace TestApp
             Form4.rta.park2 = textBox3.Text;
 
             {
-                int columnID = 0;
-                switch (comboBox1.SelectedIndex)
-                {
-                    case 0: columnID = 1; break;
-                    case 1: columnID = 2; break;
-                    case 2: columnID = 3; break;
-                    case 3: columnID = 4; break;
-                    case 4: columnID = 5; break;
-                    default: columnID = 0; break;
-                }
-                Form4.rta.type1 = columnID;
-                switch (comboBox2.SelectedIndex)
-                {
-                    case 0: columnID = 1; break;
-                    case 1: columnID = 2; break;
-                    case 2: columnID = 3; break;
-                    case 3: columnID = 4; break;
-                    case 4: columnID = 5; break;
-                    default: columnID = 0; break;
-                }
-                Form4.rta.type2 = columnID;
+                //int columnID = 0;
+                //switch (comboBox1.SelectedIndex)
+                //{
+                //    case 0: columnID = 1; break;
+                //    case 1: columnID = 2; break;
+                //    case 2: columnID = 3; break;
+                //    case 3: columnID = 4; break;
+                //    case 4: columnID = 5; break;
+                //    default: columnID = 0; break;
+                //}
+                //Form4.rta.type1 = columnID;
+                //switch (comboBox2.SelectedIndex)
+                //{
+                //    case 0: columnID = 1; break;
+                //    case 1: columnID = 2; break;
+                //    case 2: columnID = 3; break;
+                //    case 3: columnID = 4; break;
+                //    case 4: columnID = 5; break;
+                //    default: columnID = 0; break;
+                //}
+                //Form4.rta.type2 = columnID;
             }
 
             Hide();
@@ -60,8 +60,8 @@ namespace TestApp
 
         private void step6_Load(object sender, EventArgs e)
         {
-            comboBox1.SelectedIndex = 0;
-            comboBox2.SelectedIndex = 0;
+            //comboBox1.SelectedIndex = 0;
+            //comboBox2.SelectedIndex = 0;
         }
 
         private void button2_Click(object sender, EventArgs e)

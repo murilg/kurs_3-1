@@ -37,17 +37,17 @@
             reportViewer1.Location = new Point(0, 0);
             reportViewer1.Name = "ReportViewer";
             reportViewer1.ServerReport.BearerToken = null;
-            reportViewer1.Size = new Size(800, 400);
+            reportViewer1.Size = new Size(1050, 800);
             reportViewer1.TabIndex = 0;
             // 
             // ForReport2
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1050, 800);
             Controls.Add(reportViewer1);
             Name = "ForReport2";
-            Text = "ForReport2";
+            Text = "Отчёт";
             Load += ForReport2_Load;
             ResumeLayout(false);
         }

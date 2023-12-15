@@ -88,7 +88,7 @@
             Controls.Add(button1);
             Controls.Add(dataGridView1);
             Name = "Form4";
-            Text = "Form4";
+            Text = "Выберите ТС";
             Load += Form4_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

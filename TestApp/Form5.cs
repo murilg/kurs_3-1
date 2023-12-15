@@ -28,10 +28,8 @@ namespace TestApp
         private void button1_Click(object sender, EventArgs e)
         {
             rtaid = (int)dataGridView1.CurrentRow.Cells[0].Value;
-            Hide();
             var form = new ForReport();
             form.ShowDialog();
-            Close();
         }
 
         private DataTable Autho()
@@ -64,6 +62,30 @@ namespace TestApp
             }
 
             return dt;
+        }
+
+        private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Hide();
+            var form = new Form2();
+            form.ShowDialog();
+            Close();
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Hide();
+            var form = new Form3();
+            form.ShowDialog();
+            Close();
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Hide();
+            var form = new Form6();
+            form.ShowDialog();
+            Close();
         }
     }
 }

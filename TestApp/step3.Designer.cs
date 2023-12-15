@@ -39,7 +39,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(148, 55);
+            label1.Location = new Point(97, 54);
             label1.Name = "label1";
             label1.Size = new Size(329, 20);
             label1.TabIndex = 0;
@@ -47,16 +47,16 @@
             // 
             // maskedTextBox1
             // 
-            maskedTextBox1.Location = new Point(6, 26);
+            maskedTextBox1.Location = new Point(0, 26);
             maskedTextBox1.Mask = "LLL 0000000000";
             maskedTextBox1.Name = "maskedTextBox1";
-            maskedTextBox1.Size = new Size(238, 27);
+            maskedTextBox1.Size = new Size(250, 27);
             maskedTextBox1.TabIndex = 1;
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(maskedTextBox1);
-            groupBox1.Location = new Point(148, 93);
+            groupBox1.Location = new Point(97, 92);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(250, 62);
             groupBox1.TabIndex = 2;
@@ -93,7 +93,7 @@
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Name = "step3";
-            Text = "step3";
+            Text = "Введите полис ОСАГО второго участника ДТП";
             Load += step3_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();

@@ -16,10 +16,12 @@ namespace TestApp
             var dt1 = GetData("gag @rtaid");
             var dt2 = GetData("Car1 @rtaid");
             var dt3 = GetData("Car2 @rtaid");
+            var dt4 = GetData("Witness1 @rtaid");
             reportViewer1.LocalReport.DataSources.Clear();
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", dt1));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet2", dt2));
             reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet3", dt3));
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet4", dt4));
             reportViewer1.RefreshReport();
         }
 

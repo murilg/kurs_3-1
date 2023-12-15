@@ -39,6 +39,7 @@
             // 
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(40, 66);
             dataGridView1.Name = "dataGridView1";
@@ -86,7 +87,7 @@
             Controls.Add(button1);
             Controls.Add(dataGridView1);
             Name = "step4cs";
-            Text = "step4cs";
+            Text = "Выберите второго участника ДТП";
             Load += step4cs_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

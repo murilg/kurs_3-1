@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            groupBox7 = new GroupBox();
-            comboBox1 = new ComboBox();
             groupBox3 = new GroupBox();
             radioButton2 = new RadioButton();
             radioButton1 = new RadioButton();
@@ -38,8 +36,6 @@
             groupBox2 = new GroupBox();
             textBox1 = new TextBox();
             groupBox4 = new GroupBox();
-            groupBox8 = new GroupBox();
-            comboBox2 = new ComboBox();
             groupBox5 = new GroupBox();
             radioButton3 = new RadioButton();
             radioButton4 = new RadioButton();
@@ -49,52 +45,30 @@
             button1 = new Button();
             button2 = new Button();
             groupBox1.SuspendLayout();
-            groupBox7.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox4.SuspendLayout();
-            groupBox8.SuspendLayout();
             groupBox5.SuspendLayout();
             groupBox6.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(groupBox7);
             groupBox1.Controls.Add(groupBox3);
             groupBox1.Controls.Add(groupBox2);
-            groupBox1.Location = new Point(12, 34);
+            groupBox1.Location = new Point(63, 59);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(273, 356);
+            groupBox1.Size = new Size(287, 268);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Транспортное средство «А»";
-            // 
-            // groupBox7
-            // 
-            groupBox7.Controls.Add(comboBox1);
-            groupBox7.Location = new Point(16, 127);
-            groupBox7.Name = "groupBox7";
-            groupBox7.Size = new Size(251, 68);
-            groupBox7.TabIndex = 3;
-            groupBox7.TabStop = false;
-            groupBox7.Text = "Обстоятельсво ДТП";
-            // 
-            // comboBox1
-            // 
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Items.AddRange(new object[] { "ТС находилось в неподвижном состоянии", "Поворачивал направо", "Поворачивал налево", "Совершал разворот", "Двигался задним ходом" });
-            comboBox1.Location = new Point(6, 26);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(239, 28);
-            comboBox1.TabIndex = 0;
             // 
             // groupBox3
             // 
             groupBox3.Controls.Add(radioButton2);
             groupBox3.Controls.Add(radioButton1);
             groupBox3.Controls.Add(textBox2);
-            groupBox3.Location = new Point(16, 228);
+            groupBox3.Location = new Point(16, 139);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new Size(251, 116);
             groupBox3.TabIndex = 2;
@@ -128,9 +102,9 @@
             // textBox2
             // 
             textBox2.Enabled = false;
-            textBox2.Location = new Point(6, 78);
+            textBox2.Location = new Point(0, 78);
             textBox2.Name = "textBox2";
-            textBox2.Size = new Size(239, 27);
+            textBox2.Size = new Size(251, 27);
             textBox2.TabIndex = 1;
             textBox2.TextChanged += textBox2_TextChanged;
             // 
@@ -148,46 +122,26 @@
             // 
             textBox1.Location = new Point(0, 53);
             textBox1.Name = "textBox1";
-            textBox1.Size = new Size(245, 27);
+            textBox1.Size = new Size(251, 27);
             textBox1.TabIndex = 0;
             // 
             // groupBox4
             // 
-            groupBox4.Controls.Add(groupBox8);
             groupBox4.Controls.Add(groupBox5);
             groupBox4.Controls.Add(groupBox6);
-            groupBox4.Location = new Point(303, 34);
+            groupBox4.Location = new Point(419, 59);
             groupBox4.Name = "groupBox4";
-            groupBox4.Size = new Size(273, 356);
+            groupBox4.Size = new Size(281, 268);
             groupBox4.TabIndex = 1;
             groupBox4.TabStop = false;
             groupBox4.Text = "Транспортное средство «В»";
-            // 
-            // groupBox8
-            // 
-            groupBox8.Controls.Add(comboBox2);
-            groupBox8.Location = new Point(16, 119);
-            groupBox8.Name = "groupBox8";
-            groupBox8.Size = new Size(251, 68);
-            groupBox8.TabIndex = 4;
-            groupBox8.TabStop = false;
-            groupBox8.Text = "Обстоятельсво ДТП";
-            // 
-            // comboBox2
-            // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Items.AddRange(new object[] { "ТС находилось в неподвижном состоянии", "Поворачивал направо", "Поворачивал налево", "Совершал разворот", "Двигался задним ходом" });
-            comboBox2.Location = new Point(6, 26);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(239, 28);
-            comboBox2.TabIndex = 0;
             // 
             // groupBox5
             // 
             groupBox5.Controls.Add(radioButton3);
             groupBox5.Controls.Add(radioButton4);
             groupBox5.Controls.Add(textBox3);
-            groupBox5.Location = new Point(16, 199);
+            groupBox5.Location = new Point(16, 139);
             groupBox5.Name = "groupBox5";
             groupBox5.Size = new Size(251, 110);
             groupBox5.TabIndex = 2;
@@ -223,7 +177,7 @@
             textBox3.Enabled = false;
             textBox3.Location = new Point(0, 75);
             textBox3.Name = "textBox3";
-            textBox3.Size = new Size(245, 27);
+            textBox3.Size = new Size(251, 27);
             textBox3.TabIndex = 1;
             textBox3.TextChanged += textBox3_TextChanged;
             // 
@@ -274,16 +228,14 @@
             Controls.Add(groupBox4);
             Controls.Add(groupBox1);
             Name = "step6";
-            Text = "step6";
+            Text = "Информация о ТС";
             Load += step6_Load;
             groupBox1.ResumeLayout(false);
-            groupBox7.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
             groupBox2.ResumeLayout(false);
             groupBox2.PerformLayout();
             groupBox4.ResumeLayout(false);
-            groupBox8.ResumeLayout(false);
             groupBox5.ResumeLayout(false);
             groupBox5.PerformLayout();
             groupBox6.ResumeLayout(false);
@@ -309,9 +261,5 @@
         private RadioButton radioButton3;
         private RadioButton radioButton4;
         private Button button2;
-        private GroupBox groupBox7;
-        private ComboBox comboBox1;
-        private GroupBox groupBox8;
-        private ComboBox comboBox2;
     }
 }
