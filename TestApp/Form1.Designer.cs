@@ -39,6 +39,7 @@ partial class Form1
         // 
         // button1
         // 
+        button1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
         button1.Location = new Point(352, 320);
         button1.Name = "button1";
         button1.Size = new Size(94, 29);
@@ -61,6 +62,7 @@ partial class Form1
         maskedTextBox2.Name = "maskedTextBox2";
         maskedTextBox2.Size = new Size(203, 27);
         maskedTextBox2.TabIndex = 0;
+        maskedTextBox2.UseSystemPasswordChar = true;
         // 
         // groupBox1
         // 

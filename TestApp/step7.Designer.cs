@@ -199,7 +199,7 @@
             Controls.Add(groupBox5);
             Name = "step7";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Введите свидетеля";
+            Text = "Свидетель ДТП";
             Load += step7_Load;
             groupBox7.ResumeLayout(false);
             groupBox7.PerformLayout();

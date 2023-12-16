@@ -88,7 +88,7 @@
             Controls.Add(dataGridView1);
             Name = "step4cs";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Выберите второго участника ДТП";
+            Text = "Второй участник ДТП";
             Load += step4cs_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

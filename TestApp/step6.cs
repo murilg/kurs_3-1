@@ -77,10 +77,12 @@
             {
                 textBox2.Text = "";
                 textBox2.Enabled = false;
+                groupBox7.ForeColor = Color.Gray;
             }
             if (radioButton2.Checked)
             {
                 textBox2.Enabled = true;
+                groupBox7.ForeColor = Color.Black;
             }
         }
 
@@ -90,10 +92,12 @@
             {
                 textBox2.Text = "";
                 textBox2.Enabled = false;
+                groupBox7.ForeColor = Color.Gray;
             }
             if (radioButton2.Checked)
             {
                 textBox2.Enabled = true;
+                groupBox7.ForeColor = Color.Black;
             }
         }
 
@@ -103,10 +107,12 @@
             {
                 textBox3.Text = "";
                 textBox3.Enabled = false;
+                groupBox6.ForeColor = Color.Gray;
             }
             if (radioButton3.Checked)
             {
                 textBox3.Enabled = true;
+                groupBox6.ForeColor = Color.Black;
             }
         }
 
@@ -116,10 +122,12 @@
             {
                 textBox3.Text = "";
                 textBox3.Enabled = false;
+                groupBox6.ForeColor = Color.Gray;
             }
             if (radioButton3.Checked)
             {
                 textBox3.Enabled = true;
+                groupBox6.ForeColor = Color.Black;
             }
         }
     }

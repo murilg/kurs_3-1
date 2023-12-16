@@ -33,6 +33,7 @@
             linkLabel3 = new LinkLabel();
             linkLabel2 = new LinkLabel();
             linkLabel1 = new LinkLabel();
+            label1 = new Label();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -42,7 +43,7 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 67);
+            dataGridView1.Location = new Point(12, 87);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
@@ -93,11 +94,21 @@
             linkLabel1.Text = "Главная";
             linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(40, 52);
+            label1.Name = "label1";
+            label1.Size = new Size(111, 20);
+            label1.TabIndex = 9;
+            label1.Text = "Выберите ДТП";
+            // 
             // Form5
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label1);
             Controls.Add(linkLabel3);
             Controls.Add(linkLabel2);
             Controls.Add(linkLabel1);
@@ -105,7 +116,7 @@
             Controls.Add(dataGridView1);
             Name = "Form5";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Выберите ДТП";
+            Text = "Архив ДТП";
             Load += Form5_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
@@ -119,5 +130,6 @@
         private LinkLabel linkLabel3;
         private LinkLabel linkLabel2;
         private LinkLabel linkLabel1;
+        private Label label1;
     }
 }

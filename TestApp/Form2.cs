@@ -43,14 +43,23 @@ namespace TestApp
 
             using (var con = new SqlConnection(constr.ConnectionString))
             {
-                string cmdstr = "select * from dbo.GetDataForFisrtDriverInRta(@id, @vid)";
+                string cmdstr = """
+                                select concat(D.Surname, ' ', D.Name, ' ', D.Patronymic) as FIO,
+                                D.Address                                                as d_address,
+                                D.Phone_number,
+                                D.Driver_licence,
+                                D.Date_of_issue,
+                                dateadd(year, 10, D.Date_of_issue)                       as licence_expire_date,
+                                D.Category
+                                from Driver D
+                                where D.Driver_id = @id
+                                """;
                 try
                 {
                     using (var cmd = new SqlCommand(cmdstr, con))
                     {
                         con.Open();
                         cmd.Parameters.Add("@id", SqlDbType.Int).Value = Form1.id;
-                        cmd.Parameters.Add("@vid", SqlDbType.Int).Value = 1;
                         using (var rdr = cmd.ExecuteReader())
                         {
                             try
@@ -59,13 +68,13 @@ namespace TestApp
                                 {
                                     while (rdr.Read())
                                     {
-                                        you1.Text = rdr.GetString(3) + ' ' + rdr.GetString(4) + ' ' + rdr.GetString(5);
-                                        you3.Text = rdr.GetString(6);
-                                        you5.Text = rdr.GetString(7);
-                                        drl2.Text = rdr.GetString(8);
-                                        drl4.Text = rdr.GetDateTime(9).ToString("d");
-                                        drl6.Text = rdr.GetDateTime(10).ToString("d");
-                                        drl8.Text = rdr.GetString(11);
+                                        you1.Text = rdr.GetString(0);
+                                        you3.Text = rdr.GetString(1);
+                                        you5.Text = rdr.GetString(2);
+                                        drl2.Text = rdr.GetString(3);
+                                        drl4.Text = rdr.GetDateTime(4).ToString("d");
+                                        drl6.Text = rdr.GetDateTime(5).ToString("d");
+                                        drl8.Text = rdr.GetString(6);
                                     }
                                 }
                             }
@@ -82,7 +91,5 @@ namespace TestApp
                 }
             }
         }
-
-
     }
 }

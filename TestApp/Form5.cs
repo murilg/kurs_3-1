@@ -36,9 +36,12 @@ namespace TestApp
         {
             DataTable dt = new DataTable();
             string cmdstr = """
-                            select R.RTA_id, left(R.Date_and_time, 16) as date, concat(R.City, ', ', R.Street, ', ', R.Building) as Address
+                            select R.RTA_id,
+                                   concat(convert(varchar(10), R.Date_and_time, 104), ' ',
+                                          substring(convert(varchar(19), R.Date_and_time), 12, 5)) as date,
+                                   concat(R.City, ', ', R.Street, ', ', R.Building)                  as Address
                             from RTA R
-                            join RTA_Driver RD on R.RTA_id = RD.RTA_id
+                                     join RTA_Driver RD on R.RTA_id = RD.RTA_id
                             where RD.Driver_id = @id
                             """;
             using (var con = new SqlConnection(Connection.Constr.ConnectionString))

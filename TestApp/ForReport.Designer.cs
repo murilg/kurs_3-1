@@ -32,7 +32,8 @@
             SuspendLayout();
             // 
             // reportViewer1
-            // 
+            //
+            reportViewer1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             reportViewer1.LocalReport.ReportEmbeddedResource = "TestApp.Report1.rdlc";
             reportViewer1.Location = new Point(0, 0);
             reportViewer1.Name = "ReportViewer";
