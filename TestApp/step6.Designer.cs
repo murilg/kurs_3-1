@@ -254,7 +254,6 @@
             Name = "step6";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Информация о ТС";
-            Load += step6_Load;
             groupBox1.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
