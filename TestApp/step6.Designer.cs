@@ -82,7 +82,6 @@
             radioButton2.Name = "radioButton2";
             radioButton2.Size = new Size(55, 24);
             radioButton2.TabIndex = 3;
-            radioButton2.TabStop = true;
             radioButton2.Text = "Нет";
             radioButton2.UseVisualStyleBackColor = true;
             radioButton2.CheckedChanged += radioButton2_CheckedChanged;
@@ -90,6 +89,7 @@
             // radioButton1
             // 
             radioButton1.AutoSize = true;
+            radioButton1.Checked = true;
             radioButton1.Location = new Point(18, 48);
             radioButton1.Name = "radioButton1";
             radioButton1.Size = new Size(48, 24);
@@ -106,7 +106,6 @@
             textBox2.Name = "textBox2";
             textBox2.Size = new Size(251, 27);
             textBox2.TabIndex = 1;
-            textBox2.TextChanged += textBox2_TextChanged;
             // 
             // groupBox2
             // 
@@ -155,7 +154,6 @@
             radioButton3.Name = "radioButton3";
             radioButton3.Size = new Size(55, 24);
             radioButton3.TabIndex = 5;
-            radioButton3.TabStop = true;
             radioButton3.Text = "Нет";
             radioButton3.UseVisualStyleBackColor = true;
             radioButton3.CheckedChanged += radioButton3_CheckedChanged;
@@ -163,6 +161,7 @@
             // radioButton4
             // 
             radioButton4.AutoSize = true;
+            radioButton4.Checked = true;
             radioButton4.Location = new Point(15, 45);
             radioButton4.Name = "radioButton4";
             radioButton4.Size = new Size(48, 24);
@@ -179,7 +178,6 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(251, 27);
             textBox3.TabIndex = 1;
-            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // groupBox6
             // 
@@ -228,6 +226,7 @@
             Controls.Add(groupBox4);
             Controls.Add(groupBox1);
             Name = "step6";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Информация о ТС";
             Load += step6_Load;
             groupBox1.ResumeLayout(false);

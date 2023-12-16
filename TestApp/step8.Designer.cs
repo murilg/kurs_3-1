@@ -94,6 +94,7 @@
             Controls.Add(label2);
             Controls.Add(label1);
             Name = "step8";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Европротокол оформлен";
             Load += step8_Load;
             ResumeLayout(false);

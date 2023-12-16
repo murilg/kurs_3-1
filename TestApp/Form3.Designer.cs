@@ -76,7 +76,6 @@
             linkLabel2.TabIndex = 4;
             linkLabel2.TabStop = true;
             linkLabel2.Text = "ДТП";
-            linkLabel2.LinkClicked += linkLabel2_LinkClicked;
             // 
             // linkLabel1
             // 
@@ -100,6 +99,7 @@
             Controls.Add(button2);
             Controls.Add(button1);
             Name = "Form3";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ДТП";
             ResumeLayout(false);
             PerformLayout();

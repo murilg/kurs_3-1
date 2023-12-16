@@ -104,6 +104,7 @@
             Controls.Add(button1);
             Controls.Add(dataGridView1);
             Name = "Form5";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Выберите ДТП";
             Load += Form5_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

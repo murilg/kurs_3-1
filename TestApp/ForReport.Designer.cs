@@ -47,6 +47,7 @@
             ClientSize = new Size(1050, 800);
             Controls.Add(reportViewer1);
             Name = "ForReport";
+            StartPosition = FormStartPosition.CenterParent;
             Text = "Отчёт";
             Load += ForReport_Load;
             ResumeLayout(false);

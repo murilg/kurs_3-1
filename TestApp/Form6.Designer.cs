@@ -98,6 +98,7 @@
             Controls.Add(linkLabel1);
             Controls.Add(dataGridView1);
             Name = "Form6";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "ТС";
             Load += Form6_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

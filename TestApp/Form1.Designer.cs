@@ -91,8 +91,8 @@ partial class Form1
         Controls.Add(groupBox1);
         Controls.Add(button1);
         Name = "Form1";
+        StartPosition = FormStartPosition.CenterScreen;
         Text = "Вход";
-        Load += Form1_Load;
         groupBox1.ResumeLayout(false);
         groupBox1.PerformLayout();
         groupBox2.ResumeLayout(false);

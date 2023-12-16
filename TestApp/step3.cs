@@ -63,10 +63,5 @@ namespace TestApp
             form.ShowDialog();
             Close();
         }
-
-        private void step3_Load(object sender, EventArgs e)
-        {
-
-        }
     }
 }

@@ -119,7 +119,6 @@
             textBox3.Name = "textBox3";
             textBox3.Size = new Size(221, 27);
             textBox3.TabIndex = 0;
-            textBox3.TextChanged += textBox3_TextChanged;
             // 
             // groupBox3
             // 
@@ -199,6 +198,7 @@
             Controls.Add(groupBox6);
             Controls.Add(groupBox5);
             Name = "step7";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Введите свидетеля";
             Load += step7_Load;
             groupBox7.ResumeLayout(false);

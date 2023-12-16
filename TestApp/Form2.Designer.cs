@@ -69,7 +69,6 @@
             linkLabel1.TabIndex = 0;
             linkLabel1.TabStop = true;
             linkLabel1.Text = "Главная";
-            linkLabel1.LinkClicked += linkLabel1_LinkClicked;
             // 
             // linkLabel2
             // 
@@ -316,6 +315,7 @@
             Controls.Add(linkLabel2);
             Controls.Add(linkLabel1);
             Name = "Form2";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Главная";
             Load += Form2_Load;
             groupBox1.ResumeLayout(false);

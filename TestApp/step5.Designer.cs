@@ -204,6 +204,7 @@
             Controls.Add(groupBox4);
             Controls.Add(button1);
             Name = "step5";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Дата и место ДТП";
             Load += step5_Load;
             groupBox1.ResumeLayout(false);

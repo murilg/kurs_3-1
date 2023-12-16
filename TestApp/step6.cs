@@ -1,6 +1,4 @@
-﻿
-
-namespace TestApp
+﻿namespace TestApp
 {
     public partial class step6 : Form
     {
@@ -60,6 +58,7 @@ namespace TestApp
 
         private void step6_Load(object sender, EventArgs e)
         {
+
             //comboBox1.SelectedIndex = 0;
             //comboBox2.SelectedIndex = 0;
         }
@@ -122,16 +121,6 @@ namespace TestApp
             {
                 textBox3.Enabled = true;
             }
-        }
-
-        private void textBox3_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

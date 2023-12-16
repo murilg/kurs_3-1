@@ -6,7 +6,6 @@ namespace TestApp
     public partial class Form4 : Form
     {
         BindingSource Sbind = new BindingSource();
-        public static string ins;
         public static RtaClass rta = new RtaClass();
 
         public Form4()

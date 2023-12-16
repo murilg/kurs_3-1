@@ -1,7 +1,6 @@
 ﻿using Microsoft.Data.SqlClient;
 using System.Data;
 
-
 namespace TestApp
 {
     public partial class step4cs : Form

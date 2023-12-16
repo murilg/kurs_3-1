@@ -93,8 +93,8 @@
             Controls.Add(groupBox1);
             Controls.Add(label1);
             Name = "step3";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Введите полис ОСАГО второго участника ДТП";
-            Load += step3_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             ResumeLayout(false);
