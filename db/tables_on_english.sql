@@ -1,168 +1,168 @@
-use "RTA";
+USE "RTA";
 
-create table Insurance_company
+CREATE TABLE Insurance_company
 (
-    Insurance_company_id int primary key identity (1, 1),
-    Name                 varchar(40) not null
+    Insurance_company_id INT PRIMARY KEY IDENTITY (1, 1),
+    Name                 VARCHAR(40) NOT NULL
 );
 
-create table Driver
+CREATE TABLE Driver
 (
-    Driver_id      int primary key IDENTITY (1, 1),
-    Surname        varchar(30)  not null check (Surname like '[А-Яа-я]%'),
-    Name           varchar(20)  not null check (Name like '[А-Яа-я]%'),
-    Patronymic     varchar(30) check (Patronymic like '[А-Яа-я]%'),
-    Date_of_birth  date         not null,
-    Address        varchar(100),
-    Phone_number   varchar(10) check (Phone_number like '%[0-9]%'),
-    Driver_licence varchar(10) check (Driver_licence like '%[0-9]%'), -- 4, 6
-    Category       varchar(5),
-    Date_of_issue  date,
-    Password       varchar(128) not null,
-    constraint CHECK_Category CHECK (Category like 'A'
-        or Category like 'B'
-        or Category like 'C'
-        or Category like 'D'
-        or Category like 'E'
-        or Category like 'A[BCDE]'
-        or Category like 'AB[CDE]'
-        or Category like 'AC[DE]'
-        or Category like 'AD[E]'
-        or Category like 'ABC[DE]'
-        or Category like 'ABD[E]'
-        or Category like 'ABCD[E]'
-        or Category like 'B[CDE]'
-        or Category like 'BC[DE]'
-        or Category like 'BD[E]'
-        or Category like 'BCD[E]'
-        or Category like 'C[DE]'
-        or Category like 'CD[E]'
-        or Category like 'D[E]'
+    Driver_id      INT PRIMARY KEY IDENTITY (1, 1),
+    Surname        VARCHAR(30)  NOT NULL CHECK (Surname LIKE '[А-Яа-я]%'),
+    Name           VARCHAR(20)  NOT NULL CHECK (Name LIKE '[А-Яа-я]%'),
+    Patronymic     VARCHAR(30) CHECK (Patronymic LIKE '[А-Яа-я]%'),
+    Date_of_birth  DATE         NOT NULL,
+    Address        VARCHAR(100),
+    Phone_number   VARCHAR(10) CHECK (Phone_number LIKE '%[0-9]%'),
+    Driver_licence VARCHAR(10) CHECK (Driver_licence LIKE '%[0-9]%'),
+    Category       VARCHAR(5),
+    Date_of_issue  DATE,
+    Password       VARCHAR(128) NOT NULL,
+    CONSTRAINT CHECK_Category CHECK (Category LIKE 'A'
+        OR Category LIKE 'B'
+        OR Category LIKE 'C'
+        OR Category LIKE 'D'
+        OR Category LIKE 'E'
+        OR Category LIKE 'A[BCDE]'
+        OR Category LIKE 'AB[CDE]'
+        OR Category LIKE 'AC[DE]'
+        OR Category LIKE 'AD[E]'
+        OR Category LIKE 'ABC[DE]'
+        OR Category LIKE 'ABD[E]'
+        OR Category LIKE 'ABCD[E]'
+        OR Category LIKE 'B[CDE]'
+        OR Category LIKE 'BC[DE]'
+        OR Category LIKE 'BD[E]'
+        OR Category LIKE 'BCD[E]'
+        OR Category LIKE 'C[DE]'
+        OR Category LIKE 'CD[E]'
+        OR Category LIKE 'D[E]'
         ),
-    constraint UQ_PhoneNumber_on_Driver unique (Phone_number),
-    constraint UQ_DriverLicence unique (Driver_licence)
+    CONSTRAINT UQ_PhoneNumber_on_Driver UNIQUE (Phone_number),
+    CONSTRAINT UQ_DriverLicence UNIQUE (Driver_licence)
 );
 
-create table Vehicle
+CREATE TABLE Vehicle
 (
-    Vehicle_id                 int primary key IDENTITY (1, 1),
-    Owner_id                   int         not null,
-    VIN                        varchar(17) not null,
-    Number_plate               varchar(9),
-    Make                       varchar(30) not null,
-    Model                      varchar(30) not null,
-    Year_of_manufacture        date        not null,
-    Color                      varchar(25) not null,
-    Registration               varchar(10), -- 2 цифры, 2 буквы, 6 цифр
-    Registration_date_of_issue date,
-    constraint FK_DriverId_on_Vehicle foreign key (Owner_id) references Driver (Driver_id),
-    constraint UQ_Vin unique (VIN),
-    constraint UQ_Registration unique (Registration),
-    constraint UQ_NumberPlate unique (Number_plate)
+    Vehicle_id                 INT PRIMARY KEY IDENTITY (1, 1),
+    Owner_id                   INT         NOT NULL,
+    VIN                        VARCHAR(17) NOT NULL,
+    Number_plate               VARCHAR(9),
+    Make                       VARCHAR(30) NOT NULL,
+    Model                      VARCHAR(30) NOT NULL,
+    Year_of_manufacture        DATE        NOT NULL,
+    Color                      VARCHAR(25) NOT NULL,
+    Registration               VARCHAR(10),
+    Registration_date_of_issue DATE,
+    CONSTRAINT FK_DriverId_on_Vehicle FOREIGN KEY (Owner_id) REFERENCES Driver (Driver_id),
+    CONSTRAINT UQ_Vin UNIQUE (VIN),
+    CONSTRAINT UQ_Registration UNIQUE (Registration),
+    CONSTRAINT UQ_NumberPlate UNIQUE (Number_plate)
 );
 
-create table Insurance
+CREATE TABLE Insurance
 (
     Insurance_id         INT PRIMARY KEY IDENTITY (1, 1),
-    Vehicle_id           int         not null,
-    Insurance_company_id int         not null,
-    Type                 varchar(5)  not null,
-    casco                bit         not null,
-    Insurance            varchar(13) not null, -- 3 для серии (буквы), 10 для номера (цифры) -- Или серия_и_номер лучше заменить на Страховка?
-    Date_of_issue        date        not null,
-    constraint FK_InsuranceCompanyId_on_Insurance foreign key (Insurance_company_id) references Insurance_company (Insurance_company_id),
-    constraint FK_VehicleId_on_Insurance foreign key (Vehicle_id) references Vehicle (Vehicle_id),
-    constraint UQ_Insurance unique (Insurance)
+    Vehicle_id           INT         NOT NULL,
+    Insurance_company_id INT         NOT NULL,
+    Type                 VARCHAR(5)  NOT NULL,
+    casco                BIT         NOT NULL,
+    Insurance            VARCHAR(13) NOT NULL,
+    Date_of_issue        DATE        NOT NULL,
+    CONSTRAINT FK_InsuranceCompanyId_on_Insurance FOREIGN KEY (Insurance_company_id) REFERENCES Insurance_company (Insurance_company_id),
+    CONSTRAINT FK_VehicleId_on_Insurance FOREIGN KEY (Vehicle_id) REFERENCES Vehicle (Vehicle_id),
+    CONSTRAINT UQ_Insurance UNIQUE (Insurance)
 );
 
-create table Driver_Insurance
+CREATE TABLE Driver_Insurance
 (
-    Driver_Insurance_id int primary key IDENTITY (1, 1),
-    Driver_id           int not null,
-    Insurance_id        int not null,
-    constraint FK_DriverId_on_DriverInsurance foreign key (Driver_id) references Driver (Driver_id),
-    constraint FK_InsuranceId_on_DriverInsurance foreign key (Insurance_id) references Insurance (Insurance_id),
-    constraint UQ_DriverId_and_InsuranceId unique (Driver_id, Insurance_id)
+    Driver_Insurance_id INT PRIMARY KEY IDENTITY (1, 1),
+    Driver_id           INT NOT NULL,
+    Insurance_id        INT NOT NULL,
+    CONSTRAINT FK_DriverId_on_DriverInsurance FOREIGN KEY (Driver_id) REFERENCES Driver (Driver_id),
+    CONSTRAINT FK_InsuranceId_on_DriverInsurance FOREIGN KEY (Insurance_id) REFERENCES Insurance (Insurance_id),
+    CONSTRAINT UQ_DriverId_and_InsuranceId UNIQUE (Driver_id, Insurance_id)
 );
 
-create table GIBDD_officer
+CREATE TABLE GIBDD_officer
 (
-    GIBDD_officer_id int primary key IDENTITY (1, 1),
-    Surname          varchar(30)  not null check (Surname like '[А-Яа-я]%'),
-    Name             varchar(20)  not null check (Name like '[А-Яа-я]%'),
-    Patronymic       varchar(30) check (Patronymic like '[А-Яа-я]%'),
-    Badge_number     varchar(9)   not null, -- 6 цифр, 3 буквы
-    Post             varchar(50)  not null,
-    Special_rank     varchar(20)  not null,
-    Division         varchar(7)   not null,
-    Password         varchar(128) not null,
-    constraint UQ_BadgeNumber unique (Badge_number)
+    GIBDD_officer_id INT PRIMARY KEY IDENTITY (1, 1),
+    Surname          VARCHAR(30)  NOT NULL CHECK (Surname LIKE '[А-Яа-я]%'),
+    Name             VARCHAR(20)  NOT NULL CHECK (Name LIKE '[А-Яа-я]%'),
+    Patronymic       VARCHAR(30) CHECK (Patronymic LIKE '[А-Яа-я]%'),
+    Badge_number     VARCHAR(9)   NOT NULL,
+    Post             VARCHAR(50)  NOT NULL,
+    Special_rank     VARCHAR(20)  NOT NULL,
+    Division         VARCHAR(7)   NOT NULL,
+    Password         VARCHAR(128) NOT NULL,
+    CONSTRAINT UQ_BadgeNumber UNIQUE (Badge_number)
 );
 
-create table RTA
+CREATE TABLE RTA
 (
-    RTA_id              int primary key IDENTITY (1, 1),
-    City                varchar(20),
-    Street              varchar(25),
-    Building            varchar(5),
-    Date_and_time       datetime2(0) not null,
-    Number_of_wounded   tinyint      not null,
-    Number_of_dead      tinyint      not null,
-    by_an_GIBDD_officer bit          not null,
-    GIBDD_officer_id    int,
-    constraint FK_GibddOfficerId_on_Rta foreign key (GIBDD_officer_id) references GIBDD_officer (GIBDD_officer_id)
+    RTA_id              INT PRIMARY KEY IDENTITY (1, 1),
+    City                VARCHAR(20),
+    Street              VARCHAR(25),
+    Building            VARCHAR(5),
+    Date_and_time       DATETIME2(0) NOT NULL,
+    Number_of_wounded   TINYINT      NOT NULL,
+    Number_of_dead      TINYINT      NOT NULL,
+    by_an_GIBDD_officer BIT          NOT NULL,
+    GIBDD_officer_id    INT,
+    CONSTRAINT FK_GibddOfficerId_on_Rta FOREIGN KEY (GIBDD_officer_id) REFERENCES GIBDD_officer (GIBDD_officer_id)
 );
 
-create table Witness
+CREATE TABLE Witness
 (
-    Witness_id    int primary key IDENTITY (1, 1),
-    RTA_id        int         not null,
-    Surname       varchar(30) not null check (Surname like '[А-Яа-я]%'),
-    Name          varchar(20) not null check (Name like '[А-Яа-я]%'),
-    Patronymic    varchar(30) check (Patronymic like '[А-Яа-я]%'),
-    Date_of_birth date        not null,
-    Address       varchar(100),
-    Phone_number  varchar(10) check (Phone_number like '%[0-9]%'),
-    constraint FK_RtaId_on_Witness foreign key (RTA_id) references RTA (RTA_id),
-    constraint UQ_PhoneNumber_on_Witness unique (Phone_number)
+    Witness_id    INT PRIMARY KEY IDENTITY (1, 1),
+    RTA_id        INT         NOT NULL,
+    Surname       VARCHAR(30) NOT NULL CHECK (Surname LIKE '[А-Яа-я]%'),
+    Name          VARCHAR(20) NOT NULL CHECK (Name LIKE '[А-Яа-я]%'),
+    Patronymic    VARCHAR(30) CHECK (Patronymic LIKE '[А-Яа-я]%'),
+    Date_of_birth DATE        NOT NULL,
+    Address       VARCHAR(100),
+    Phone_number  VARCHAR(10) CHECK (Phone_number LIKE '%[0-9]%'),
+    CONSTRAINT FK_RtaId_on_Witness FOREIGN KEY (RTA_id) REFERENCES RTA (RTA_id),
+    CONSTRAINT UQ_PhoneNumber_on_Witness UNIQUE (Phone_number)
 );
 
-create table RTA_Driver
+CREATE TABLE RTA_Driver
 (
-    RTA_Driver_id            int primary key IDENTITY (1, 1),
-    RTA_id                   int not null,
-    Driver_id                int not null,
-    Vehicle_id               int not null,
-    the_driver_is_drunk      bit not null, -- Был ли пьян водитель?
-    is_the_owner_a_driver    bit not null,
-    is_the_vehicle_insured   bit not null, -- Застраховано ли ТС?
-    Vehicle_damage           varchar(120), -- Повреждения ТС
-    damage_to_other_property bit not null,
-    Damaged_property_name    varchar(100),
-    Damaged_property_owner   varchar(100),
-    can_the_vehicle_move     bit not null,
-    Vehicle_parking_address  varchar(100),
-    constraint FK_RtaId_on_RtaDriver foreign key (RTA_id) references RTA (RTA_id),
-    constraint FK_DriverId_on_RtaDriver foreign key (Driver_id) references Driver (Driver_id),
-    constraint FK_VehicleId_on_RtaDriver foreign key (Vehicle_id) references Vehicle (Vehicle_id),
-    constraint UQ_RtaId_and_DriverId_and_VehicleId unique (RTA_id, Driver_id, Vehicle_id)
+    RTA_Driver_id            INT PRIMARY KEY IDENTITY (1, 1),
+    RTA_id                   INT NOT NULL,
+    Driver_id                INT NOT NULL,
+    Vehicle_id               INT NOT NULL,
+    the_driver_is_drunk      BIT NOT NULL,
+    is_the_owner_a_driver    BIT NOT NULL,
+    is_the_vehicle_insured   BIT NOT NULL,
+    Vehicle_damage           VARCHAR(120),
+    damage_to_other_property BIT NOT NULL,
+    Damaged_property_name    VARCHAR(100),
+    Damaged_property_owner   VARCHAR(100),
+    can_the_vehicle_move     BIT NOT NULL,
+    Vehicle_parking_address  VARCHAR(100),
+    CONSTRAINT FK_RtaId_on_RtaDriver FOREIGN KEY (RTA_id) REFERENCES RTA (RTA_id),
+    CONSTRAINT FK_DriverId_on_RtaDriver FOREIGN KEY (Driver_id) REFERENCES Driver (Driver_id),
+    CONSTRAINT FK_VehicleId_on_RtaDriver FOREIGN KEY (Vehicle_id) REFERENCES Vehicle (Vehicle_id),
+    CONSTRAINT UQ_RtaId_and_DriverId_and_VehicleId UNIQUE (RTA_id, Driver_id, Vehicle_id)
 );
 
-create table Tag
+CREATE TABLE Tag
 (
-    Tag_id int primary key identity (1, 1),
-    Name   varchar(40) not null,
-    constraint UQ_Name unique (Name)
+    Tag_id INT PRIMARY KEY IDENTITY (1, 1),
+    Name   VARCHAR(40) NOT NULL,
+    CONSTRAINT UQ_Name UNIQUE (Name)
 );
 
-create table Tag_map
+CREATE TABLE Tag_map
 (
-    Tag_map_id    int primary key identity (1, 1),
-    RTA_Driver_id int not null,
-    Tag_id        int not null,
-    constraint FK_RtaDriverId_on_TagMap foreign key (RTA_Driver_id) references RTA_Driver (RTA_Driver_id),
-    constraint FK_TagId_on_TagMap foreign key (Tag_id) references Tag (Tag_id),
-    constraint UQ_RtaDriverId_and_TagId unique (RTA_Driver_id, Tag_id)
+    Tag_map_id    INT PRIMARY KEY IDENTITY (1, 1),
+    RTA_Driver_id INT NOT NULL,
+    Tag_id        INT NOT NULL,
+    CONSTRAINT FK_RtaDriverId_on_TagMap FOREIGN KEY (RTA_Driver_id) REFERENCES RTA_Driver (RTA_Driver_id),
+    CONSTRAINT FK_TagId_on_TagMap FOREIGN KEY (Tag_id) REFERENCES Tag (Tag_id),
+    CONSTRAINT UQ_RtaDriverId_and_TagId UNIQUE (RTA_Driver_id, Tag_id)
 );
 go
 
@@ -345,94 +345,94 @@ go
 ------------------------------------------ ТРИГГЕРЫ ------------------------------------------
 -- 1. Триггер на проверку уникального значения адреса и времени, чтоб не повторялось.
 CREATE OR ALTER TRIGGER PreventDuplicateRtaDetails
-    ON RTA
-    AFTER INSERT
-    AS
+  ON RTA
+  AFTER INSERT
+AS
 BEGIN
-    IF (SELECT count(R.RTA_id)
-        FROM RTA R
-        WHERE EXISTS (SELECT 1
-                      FROM inserted I
-                      WHERE R.City = I.City
-                        and R.Street = I.Street
-                        and R.Building = I.Building
-                        AND R.Date_and_time = I.Date_and_time)) > 1
-        BEGIN
-            RAISERROR ('Нельзя создать дубликат ДТП.', 16, 1);
-            ROLLBACK TRANSACTION;
-        END
+  SET NOCOUNT ON;
+  IF (SELECT COUNT(R.RTA_id)
+      FROM RTA R
+      WHERE EXISTS (SELECT 1
+                    FROM inserted I
+                    WHERE R.City = I.City
+                      AND R.Street = I.Street
+                      AND R.Building = I.Building
+                      AND R.Date_and_time = I.Date_and_time)) > 1
+  BEGIN
+    RAISERROR ('Нельзя создать дубликат ДТП.', 16, 1);
+    ROLLBACK TRANSACTION;
+  END;
 END;
 go
 
 -- 2. Триггер обновления "проверка страховки" (если в страховке больше 5 человек).
-create or alter trigger checkInsurance
-    on Driver_Insurance
-    instead of insert
-    as
-begin
-    declare @numOfins int;
-    set @numOfins = (select count(Driver_Insurance.Insurance_id)
-                     from Driver_Insurance
-                     where Driver_Insurance_id = (select Driver_Insurance_id
-                                                  from inserted));
-    if @numOfins > 5
-        rollback transaction;
-end;
+CREATE OR ALTER TRIGGER checkInsurance
+  ON Driver_Insurance
+  INSTEAD OF INSERT
+AS
+BEGIN
+  SET NOCOUNT ON;
+  DECLARE @numOfins INT;
+  SET @numOfins = (SELECT COUNT(Insurance_id)
+                   FROM Driver_Insurance
+                   WHERE Driver_Insurance_id = (SELECT Driver_Insurance_id
+                                                FROM inserted));
+  IF @numOfins > 5
+    ROLLBACK TRANSACTION;
+END;
 go
 
 -- 3. Триггер проверки даты страховки, если страховка просрочена, то выводит "просрочено".
 CREATE OR ALTER TRIGGER CheckInsuranceDate
-    ON Insurance
-    AFTER INSERT, UPDATE
-    AS
+  ON Insurance
+  AFTER INSERT, UPDATE
+AS
 BEGIN
-    DECLARE @InsuranceStartDate date;
-    DECLARE @InsuranceEndDate date;
-    DECLARE @CurrentDate date;
-    SELECT @InsuranceStartDate = Date_of_issue FROM inserted;
-    SELECT @InsuranceEndDate = DATEADD(YEAR, 1, @InsuranceStartDate);
-    SELECT @CurrentDate = GETDATE();
+  SET NOCOUNT ON;
+  DECLARE @InsuranceStartDate DATE;
+  DECLARE @InsuranceEndDate DATE;
+  DECLARE @CurrentDate DATE;
+  SELECT @InsuranceStartDate = Date_of_issue FROM inserted;
+  SELECT @InsuranceEndDate = DATEADD(YEAR, 1, @InsuranceStartDate);
+  SELECT @CurrentDate = GETDATE();
 
-    IF @InsuranceEndDate < @CurrentDate
-        BEGIN
-            PRINT 'Страховка просрочена.';
-        END
-    ELSE
-        BEGIN
-            PRINT 'Страховка действительна.';
-        END
+  IF @InsuranceEndDate < @CurrentDate
+    PRINT 'Страховка просрочена.';
+  ELSE
+    PRINT 'Страховка действительна.';
 END;
 go
 
 
 ------------------------------------------ ПРОЦЕДУРЫ ------------------------------------------
 -- 1. Процедура для вывода всех свидетелей в одном каком-либо нарушении. Входные аргументы: дата, время и место нарушения.
-CREATE OR ALTER PROCEDURE GetRtaWitnesses @RTADateAndTime datetime2(0),
-                                          @RTACity varchar(20),
-                                          @RTAStreet varchar(25),
-                                          @RTABuilding varchar(5)
+CREATE OR ALTER PROCEDURE GetRtaWitnesses
+  @RTADateAndTime DATETIME2(0),
+  @RTACity VARCHAR(20),
+  @RTAStreet VARCHAR(25),
+  @RTABuilding VARCHAR(5)
 AS
 BEGIN
-    set nocount on;
-    SELECT RTA.RTA_id, W.Surname, W.Name, W.Patronymic, W.Date_of_birth, W.Address, W.Phone_number
-    FROM RTA
-             JOIN Witness W ON RTA.RTA_id = W.RTA_id
-    WHERE RTA.Date_and_time = @RTADateAndTime
-      AND RTA.City = @RTACity
-      AND RTA.Street = @RTAStreet
-      AND RTA.Building = @RTABuilding;
+  SET NOCOUNT ON;
+  SELECT RTA.RTA_id, W.Surname, W.Name, W.Patronymic, W.Date_of_birth, W.Address, W.Phone_number
+  FROM RTA
+    JOIN Witness W ON RTA.RTA_id = W.RTA_id
+  WHERE RTA.Date_and_time = @RTADateAndTime
+    AND RTA.City = @RTACity
+    AND RTA.Street = @RTAStreet
+    AND RTA.Building = @RTABuilding;
 END;
 go
 
 -- 2. Процедура для вывода ДТП, которое оформлял конкретный сотрудник ГИБДД.
-CREATE OR ALTER PROCEDURE GetRtaByOfficer @BadgeNumber varchar(9)
+CREATE OR ALTER PROCEDURE GetRtaByOfficer @BadgeNumber VARCHAR(9)
 AS
 BEGIN
-    set nocount on;
-    SELECT RTA.RTA_id, RTA.Date_and_time, RTA.City, RTA.Street, RTA.Building
-    FROM RTA
-             join GIBDD_officer on RTA.GIBDD_officer_id = GIBDD_officer.GIBDD_officer_id
-    WHERE GIBDD_officer.Badge_number = @BadgeNumber;
+  SET NOCOUNT ON;
+  SELECT RTA.RTA_id, RTA.Date_and_time, RTA.City, RTA.Street, RTA.Building
+  FROM RTA
+    JOIN GIBDD_officer ON RTA.GIBDD_officer_id = GIBDD_officer.GIBDD_officer_id
+  WHERE GIBDD_officer.Badge_number = @BadgeNumber;
 END;
 go
 
@@ -440,65 +440,65 @@ go
 CREATE OR ALTER PROCEDURE GetDriversByInsuranceNumber @InsuranceNumber VARCHAR(13)
 AS
 BEGIN
-    set nocount on;
-    SELECT D.Surname, D.Name, D.Patronymic, D.Driver_licence, D.Address, D.Phone_number
-    FROM Driver D
-             join Driver_Insurance DI on D.Driver_id = DI.Driver_id
-             join Insurance I on DI.Insurance_id = I.Insurance_id
-    WHERE I.Insurance = @InsuranceNumber
-    ORDER BY D.Surname ASC;
+  SET NOCOUNT ON;
+  SELECT D.Surname, D.Name, D.Patronymic, D.Driver_licence, D.Address, D.Phone_number
+  FROM Driver D
+    JOIN Driver_Insurance DI ON D.Driver_id = DI.Driver_id
+    JOIN Insurance I ON DI.Insurance_id = I.Insurance_id
+  WHERE I.Insurance = @InsuranceNumber
+  ORDER BY D.Surname ASC;
 END;
 go
 
 ------------------------------------------ ФУНКЦИИ ------------------------------------------
 -- 1. Функция, которая считает количество пострадавших и погибших по определённому обстоятельству ДТП.
-create or alter function CountWoundedAndDead()
-    returns @res Table
-                 (
-                     Name              varchar(40),
-                     Number_of_wounded tinyint,
-                     Number_of_dead    tinyint
-                 )
-as
-begin
-    insert @res
-    select T.Name, sum(R.Number_of_wounded), sum(R.Number_of_dead)
-    from Tag T
-             join Tag_map Tm on T.Tag_id = Tm.Tag_id
-             join RTA_Driver RD on Tm.RTA_Driver_id = RD.RTA_Driver_id
-             join RTA R on RD.RTA_id = R.RTA_id
-    group by T.Name;
-    return;
-end;
+CREATE OR ALTER FUNCTION CountWoundedAndDead()
+  RETURNS @res Table
+    (
+      Name              VARCHAR(40),
+      Number_of_wounded TINYINT,
+      Number_of_dead    TINYINT
+    )
+AS
+BEGIN
+  INSERT @res
+  SELECT T.Name, sum(R.Number_of_wounded), sum(R.Number_of_dead)
+  FROM Tag T
+    JOIN Tag_map Tm ON T.Tag_id = Tm.Tag_id
+    JOIN RTA_Driver RD ON Tm.RTA_Driver_id = RD.RTA_Driver_id
+    JOIN RTA R ON RD.RTA_id = R.RTA_id
+  GROUP BY T.Name;
+  RETURN;
+END;
 go
--- select *
+-- SELECT *
 -- from CountWoundedAndDead();
 -- go
 
 -- 2. Функция сортировка ДТП по городу.
 CREATE OR ALTER FUNCTION GetRtaByCity(
-    @cityName VARCHAR(20)
+  @cityName VARCHAR(20)
 )
-    RETURNS TABLE
-        AS
-        RETURN(SELECT *
-               FROM RTA
-               WHERE City = @cityName);
+  RETURNS TABLE
+AS
+  RETURN(SELECT *
+         FROM RTA
+         WHERE City = @cityName);
 go
 
 -- 3. Функция возврат таблицы: сколько водителей попали в ДТП по определённому обстоятельству.
 CREATE OR ALTER FUNCTION GetRtaDetailsByType(
-    @RtaType VARCHAR(40)
+  @RtaType VARCHAR(40)
 )
-    RETURNS TABLE
-        AS
-        RETURN(SELECT T.Name, COUNT(Tm.RTA_Driver_id) AS PeopleCount
-               FROM Tag T
-                        join Tag_map Tm on T.Tag_id = Tm.Tag_id
-               WHERE T.Name = @RtaType
-               GROUP BY T.Name);
+  RETURNS TABLE
+AS
+  RETURN(SELECT T.Name, COUNT(Tm.RTA_Driver_id) AS PeopleCount
+         FROM Tag T
+           JOIN Tag_map Tm ON T.Tag_id = Tm.Tag_id
+         WHERE T.Name = @RtaType
+         GROUP BY T.Name);
 go
--- select *
+-- SELECT *
 -- from dbo.GetRtaDetailsByType('Двигался задним ходом');
 -- go
 
@@ -509,7 +509,7 @@ CREATE OR ALTER VIEW DriversInDUIRta
 AS
 SELECT DISTINCT D.Surname, D.Name, D.Patronymic, D.Driver_licence, D.Category, D.Date_of_issue
 FROM RTA_Driver RD
-         JOIN Driver D on RD.Driver_id = D.Driver_id
+  JOIN Driver D ON RD.Driver_id = D.Driver_id
 WHERE the_driver_is_drunk = 1;
 go
 
@@ -518,7 +518,7 @@ CREATE OR ALTER VIEW RtaCountByCar
 AS
 SELECT V.Number_plate, COUNT(RTA_id) AS RtaCount
 FROM RTA_Driver RD
-         JOIN Vehicle V on RD.Vehicle_id = V.Vehicle_id
+  JOIN Vehicle V ON RD.Vehicle_id = V.Vehicle_id
 GROUP BY V.Number_plate;
 go
 
@@ -527,145 +527,145 @@ CREATE OR ALTER VIEW OwnersView
 AS
 SELECT Vehicle.Number_plate, Driver.Surname, Driver.Name, Driver.Patronymic
 FROM Driver
-         JOIN Vehicle ON Driver.Driver_id = Vehicle.Owner_id;
+  JOIN Vehicle ON Driver.Driver_id = Vehicle.Owner_id;
 go
 
 
 ------------------------------------------ ДЛЯ ОТЧЁТА ------------------------------------------
-create or alter proc gag @rtaid int
-as
-    set nocount on;
-select RTA.RTA_id,
-       concat(convert(varchar(10), RTA.Date_and_time, 104), ' ',
-              substring(convert(varchar(19), RTA.Date_and_time), 12, 5)) as Date_and_time,
-       concat(RTA.City, ', ', RTA.Street, ', ', RTA.Building)            as Address,
+CREATE OR ALTER PROC gag @rtaid INT
+AS
+SET NOCOUNT ON;
+SELECT RTA.RTA_id,
+       CONCAT(CONVERT(VARCHAR(10), RTA.Date_and_time, 104), ' ',
+              SUBSTRING(CONVERT(VARCHAR(19), RTA.Date_and_time), 12, 5)) AS Date_and_time,
+       CONCAT(RTA.City, ', ', RTA.Street, ', ', RTA.Building) AS Address,
        RTA.Number_of_dead,
        RTA.Number_of_wounded,
        CASE by_an_GIBDD_officer
-           WHEN 1 THEN 'Да'
-           WHEN 0 THEN 'Нет' END                                         as by_an_GIBDD_officer,
+         WHEN 1 THEN 'Да'
+         WHEN 0 THEN 'Нет' END AS by_an_GIBDD_officer,
        CASE by_an_GIBDD_officer
-           WHEN 0 THEN '–'
-           else G.Badge_number END                                       as Badge_number
-from rta
-         left join GIBDD_officer G on G.GIBDD_officer_id = rta.GIBDD_officer_id
-where rta_id = @rtaid;
+         WHEN 0 THEN '–'
+         ELSE G.Badge_number END AS Badge_number
+FROM RTA
+  LEFT JOIN GIBDD_officer G ON G.GIBDD_officer_id = RTA.GIBDD_officer_id
+WHERE RTA_id = @rtaid;
 go
 
-create or alter proc Car2 @rtaid int
-as
-    set nocount on;
-select concat(V.Make, ' ', V.Model)                                 as MakeModel,
+CREATE OR ALTER PROC Car2 @rtaid INT
+AS
+SET NOCOUNT ON;
+SELECT CONCAT(V.Make, ' ', V.Model) AS MakeModel,
        V.VIN,
        V.Number_plate,
        V.Registration,
-       concat(O.Surname, ' ', O.Name, ' ', O.Patronymic)            as o_FIO,
-       O.Address                                                    as o_address,
-       concat(D.Surname, ' ', D.Name, ' ', D.Patronymic)            as d_FIO,
-       case the_driver_is_drunk
-           when 1 then 'Да'
-           when 0 then 'Нет' end                                    as drunk,
-       convert(varchar(10), D.Date_of_birth, 104)                   as Date_of_birth,
-       D.Address                                                    as d_address,
+       CONCAT(O.Surname, ' ', O.Name, ' ', O.Patronymic) AS o_FIO,
+       O.Address AS o_address,
+       CONCAT(D.Surname, ' ', D.Name, ' ', D.Patronymic) AS d_FIO,
+       CASE the_driver_is_drunk
+         WHEN 1 THEN 'Да'
+         WHEN 0 THEN 'Нет' END AS drunk,
+       CONVERT(VARCHAR(10), D.Date_of_birth, 104) AS Date_of_birth,
+       D.Address AS d_address,
        D.Phone_number,
        D.Driver_licence,
        D.Category,
-       convert(varchar(10), D.Date_of_issue, 104)                   as DL_Date_of_issue,
+       CONVERT(VARCHAR(10), D.Date_of_issue, 104) AS DL_Date_of_issue,
        Ic.Name,
        I.Insurance,
-       convert(varchar(10), dateadd(year, 1, I.date_of_issue), 104) as I_Expiration_Date,
-       isnull(RD.Vehicle_damage, '–')                               as Vehicle_damage,
-       case I.casco
-           when 1 then 'Да'
-           when 0 then 'Нет' end                                    as is_the_vehicle_insured,
-       case RD.damage_to_other_property
-           when 1 then 'Да'
-           when 0 then 'Нет' end                                    as damage_to_other_property,
-       case RD.damage_to_other_property
-           when 1 then RD.Damaged_property_name
-           else '–' end                                             as Damaged_property_name,
-       case RD.damage_to_other_property
-           when 1 then RD.Damaged_property_owner
-           else '–' end                                             as Damaged_property_owner,
-       case RD.can_the_vehicle_move
-           when 1 then 'Да'
-           when 0 then 'Нет' end                                    as can_the_vehicle_move,
-       case RD.can_the_vehicle_move
-           when 1 then '–'
-           else RD.Vehicle_parking_address end                      as Vehicle_parking_address
-from (select top 1 RD.RTA_Driver_id
-      from RTA_Driver RD
-      where RD.RTA_id = @rtaid
-      order by 1 desc) as jj
-         join RTA_Driver RD on RD.RTA_Driver_id = jj.RTA_Driver_id
-         join Vehicle V on RD.Vehicle_id = V.Vehicle_id
-         join Driver O on O.Driver_id = V.Owner_id
-         join Driver D on RD.Driver_id = D.Driver_id
-         join Insurance I on I.Vehicle_id = V.Vehicle_id
-         join Insurance_company Ic on I.Insurance_company_id = Ic.Insurance_company_id;
+       CONVERT(VARCHAR(10), DATEADD(YEAR, 1, I.date_of_issue), 104) AS I_Expiration_Date,
+       ISNULL(RD.Vehicle_damage, '–') AS Vehicle_damage,
+       CASE I.casco
+         WHEN 1 THEN 'Да'
+         WHEN 0 THEN 'Нет' END AS is_the_vehicle_insured,
+       CASE RD.damage_to_other_property
+         WHEN 1 THEN 'Да'
+         WHEN 0 THEN 'Нет' END AS damage_to_other_property,
+       CASE RD.damage_to_other_property
+         WHEN 1 THEN RD.Damaged_property_name
+         ELSE '–' END AS Damaged_property_name,
+       CASE RD.damage_to_other_property
+         WHEN 1 THEN RD.Damaged_property_owner
+         ELSE '–' END AS Damaged_property_owner,
+       CASE RD.can_the_vehicle_move
+         WHEN 1 THEN 'Да'
+         WHEN 0 THEN 'Нет' END AS can_the_vehicle_move,
+       CASE RD.can_the_vehicle_move
+         WHEN 1 THEN '–'
+         ELSE RD.Vehicle_parking_address END AS Vehicle_parking_address
+FROM (SELECT TOP (1) RD.RTA_Driver_id
+      FROM RTA_Driver RD
+      WHERE RD.RTA_id = @rtaid
+      ORDER BY 1 DESC) AS jj
+        JOIN RTA_Driver RD ON RD.RTA_Driver_id = jj.RTA_Driver_id
+        JOIN Vehicle V ON RD.Vehicle_id = V.Vehicle_id
+        JOIN Driver O ON O.Driver_id = V.Owner_id
+        JOIN Driver D ON RD.Driver_id = D.Driver_id
+        JOIN Insurance I ON I.Vehicle_id = V.Vehicle_id
+        JOIN Insurance_company Ic ON I.Insurance_company_id = Ic.Insurance_company_id;
 go
 
-create or alter proc Car1 @rtaid int
-as
-    set nocount on;
-select concat(V.Make, ' ', V.Model)                                 as MakeModel,
+CREATE OR ALTER PROC Car1 @rtaid INT
+AS
+SET NOCOUNT ON;
+SELECT CONCAT(V.Make, ' ', V.Model) AS MakeModel,
        V.VIN,
        V.Number_plate,
        V.Registration,
-       concat(O.Surname, ' ', O.Name, ' ', O.Patronymic)            as o_FIO,
-       O.Address                                                    as o_address,
-       concat(D.Surname, ' ', D.Name, ' ', D.Patronymic)            as d_FIO,
-       case the_driver_is_drunk
-           when 1 then 'Да'
-           when 0 then 'Нет' end                                    as drunk,
-       convert(varchar(10), D.Date_of_birth, 104)                   as Date_of_birth,
-       D.Address                                                    as d_address,
+       CONCAT(O.Surname, ' ', O.Name, ' ', O.Patronymic) AS o_FIO,
+       O.Address AS o_address,
+       CONCAT(D.Surname, ' ', D.Name, ' ', D.Patronymic) AS d_FIO,
+       CASE the_driver_is_drunk
+         WHEN 1 THEN 'Да'
+         WHEN 0 THEN 'Нет' END AS drunk,
+       CONVERT(VARCHAR(10), D.Date_of_birth, 104) AS Date_of_birth,
+       D.Address AS d_address,
        D.Phone_number,
        D.Driver_licence,
        D.Category,
-       convert(varchar(10), D.Date_of_issue, 104)                   as DL_Date_of_issue,
+       CONVERT(VARCHAR(10), D.Date_of_issue, 104) AS DL_Date_of_issue,
        Ic.Name,
        I.Insurance,
-       convert(varchar(10), dateadd(year, 1, I.date_of_issue), 104) as I_Expiration_Date,
-       isnull(RD.Vehicle_damage, '–')                               as Vehicle_damage,
-       case I.casco
-           when 1 then 'Да'
-           when 0 then 'Нет' end                                    as is_the_vehicle_insured,
-       case RD.damage_to_other_property
-           when 1 then 'Да'
-           when 0 then 'Нет' end                                    as damage_to_other_property,
-       case RD.damage_to_other_property
-           when 1 then RD.Damaged_property_name
-           else '–' end                                             as Damaged_property_name,
-       case RD.damage_to_other_property
-           when 1 then RD.Damaged_property_owner
-           else '–' end                                             as Damaged_property_owner,
-       case RD.can_the_vehicle_move
-           when 1 then 'Да'
-           when 0 then 'Нет' end                                    as can_the_vehicle_move,
-       case RD.can_the_vehicle_move
-           when 1 then '–'
-           else RD.Vehicle_parking_address end                      as Vehicle_parking_address
-from (select top 1 RD.RTA_Driver_id
-      from RTA_Driver RD
-      where RD.RTA_id = @rtaid
-      order by 1 asc) as jj
-         join RTA_Driver RD on RD.RTA_Driver_id = jj.RTA_Driver_id
-         join Vehicle V on RD.Vehicle_id = V.Vehicle_id
-         join Driver O on O.Driver_id = V.Owner_id
-         join Driver D on RD.Driver_id = D.Driver_id
-         join Insurance I on I.Vehicle_id = V.Vehicle_id
-         join Insurance_company Ic on I.Insurance_company_id = Ic.Insurance_company_id;
+       CONVERT(VARCHAR(10), DATEADD(YEAR, 1, I.date_of_issue), 104) AS I_Expiration_Date,
+       ISNULL(RD.Vehicle_damage, '–') AS Vehicle_damage,
+       CASE I.casco
+         WHEN 1 THEN 'Да'
+         WHEN 0 THEN 'Нет' END AS is_the_vehicle_insured,
+       CASE RD.damage_to_other_property
+         WHEN 1 THEN 'Да'
+         WHEN 0 THEN 'Нет' END AS damage_to_other_property,
+       CASE RD.damage_to_other_property
+         WHEN 1 THEN RD.Damaged_property_name
+         ELSE '–' END AS Damaged_property_name,
+       CASE RD.damage_to_other_property
+         WHEN 1 THEN RD.Damaged_property_owner
+         ELSE '–' END AS Damaged_property_owner,
+       CASE RD.can_the_vehicle_move
+         WHEN 1 THEN 'Да'
+         WHEN 0 THEN 'Нет' END AS can_the_vehicle_move,
+       CASE RD.can_the_vehicle_move
+         WHEN 1 THEN '–'
+         ELSE RD.Vehicle_parking_address END AS Vehicle_parking_address
+FROM (SELECT TOP (1) RD.RTA_Driver_id
+      FROM RTA_Driver RD
+      WHERE RD.RTA_id = @rtaid
+      ORDER BY 1 ASC) AS jj
+        JOIN RTA_Driver RD ON RD.RTA_Driver_id = jj.RTA_Driver_id
+        JOIN Vehicle V ON RD.Vehicle_id = V.Vehicle_id
+        JOIN Driver O ON O.Driver_id = V.Owner_id
+        JOIN Driver D ON RD.Driver_id = D.Driver_id
+        JOIN Insurance I ON I.Vehicle_id = V.Vehicle_id
+        JOIN Insurance_company Ic ON I.Insurance_company_id = Ic.Insurance_company_id;
 go
 
-create or alter proc Witness1 @rtaid int
-as
-    set nocount on;
-select top (1) concat(Surname, ' ', Name, ' ', Patronymic) as FIO,
-               convert(varchar(10), Date_of_birth, 104)    as Date_of_birth,
+CREATE OR ALTER PROC Witness1 @rtaid INT
+AS
+    SET NOCOUNT ON;
+SELECT TOP (1) concat(Surname, ' ', Name, ' ', Patronymic) AS FIO,
+               convert(VARCHAR(10), Date_of_birth, 104)    AS Date_of_birth,
                Address,
                Phone_number
-from Witness
-where RTA_id = @rtaid
-order by FIO asc;
+FROM Witness
+WHERE RTA_id = @rtaid
+ORDER BY FIO ASC;
 go
